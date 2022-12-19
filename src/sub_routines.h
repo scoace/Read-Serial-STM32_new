@@ -67,11 +67,20 @@ void check_buf(byte buffer[64], int length)
         {
           sw.a = true;
           patch_forward;
+
+          if (true)
+          {
+            Serial2.println("Patch forward");
+          }
         }
         else
         {
           sw.a = false;
           patch_back;
+          if (true)
+          {
+            Serial2.println("Patch Backward");
+          }
         }
         Serial2.print("LED_A: ");
         Serial2.println(sw.a);
@@ -186,7 +195,7 @@ void check_buf(byte buffer[64], int length)
     }
     break;
   case 0x82:
-    dbg("Wah/Volume",buffer[4]);
+    dbg("Wah/Volume", buffer[4]);
     midi_cc(0xb0, 11, buffer[4]);
     break;
   default:
